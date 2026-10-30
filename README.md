@@ -1,34 +1,34 @@
 # GALERYART
 
-Web de una galería de arte con tienda incluida, hecha con React y TypeScript. No tiene servidor: el carrito, los favoritos, las cuentas y los pedidos se guardan en el navegador (localStorage).
+Una galería de arte online con su tienda, hecha con React y TypeScript. No tiene backend: el carrito, los favoritos, las cuentas y los pedidos se guardan en el localStorage del navegador.
 
-## Qué hay
+## Qué puedes hacer en la web
 
-- Catálogo de obras con filtros (categoría, color, precio, formato), orden y búsqueda.
-- "Descubrir": eliges qué te gusta y tu presupuesto y la página reordena las obras.
-- Ficha de cada obra, con una vista a escala sobre un sofá de 2 metros.
-- Carrito, favoritos, cuenta de usuario y una compra de prueba con su confirmación.
-- Páginas de artistas, un formulario para vender obras y las páginas del pie (contacto, envíos, FAQ...).
+Hay un catálogo de obras que se puede filtrar por categoría, color, precio y formato, ordenar y buscar. También tiene una sección "Descubrir" donde marcas lo que te gusta, pones tu presupuesto y las obras se reordenan según eso.
 
-## Cómo arrancarlo
+Cada obra tiene su ficha, con una vista a escala para ver cómo quedaría sobre un sofá de 2 metros. Además hay carrito, favoritos, cuenta de usuario y una compra de prueba que termina en una página de confirmación.
 
-Hace falta Node 18 o 20.
+Por último, están las páginas de cada artista, un formulario para quien quiera vender obras y las páginas del pie (contacto, envíos, FAQ y demás).
+
+## Para arrancarlo
+
+Necesitas Node 18 o 20.
 
 ```bash
 npm install
 npm start
 ```
 
-Se abre en http://localhost:3000. Otros comandos:
+Se abre solo en http://localhost:3000. Si quieres otras cosas:
 
 ```bash
-npm test        # tests
-npm run build   # versión para producción, sale en /build
+npm test        # lanza los tests
+npm run build   # genera la versión de producción en /build
 ```
 
-Si lo ejecutas en WSL, mejor tener la carpeta dentro de tu home de Linux (`~`) y no en `/mnt/c`. Con `/mnt/c` `npm install` va lento y a veces no recarga al guardar.
+Si lo usas en WSL, deja la carpeta del proyecto en tu home de Linux (`~`) y no en `/mnt/c`. Desde `/mnt/c` el `npm install` tarda una eternidad y a veces no recarga al guardar.
 
-## Estructura
+## Cómo está organizado
 
 ```
 src/
@@ -36,16 +36,16 @@ src/
   context/       carrito y favoritos (TiendaContext), cuentas (AuthContext), avisos
   componentes/
     Navbar/  Footer/  CartDrawer/  ObraCard/
-    Pages/       una carpeta por página
+    Pages/       una carpeta por cada página
   index.css      colores y tipografías (variables CSS)
 ```
 
-Para cambiar las obras hay que tocar `src/data/obras.ts`. Los artistas están en `src/data/artistas.ts`, y los colores en las variables de `src/index.css`.
+Si quieres cambiar las obras, edita `src/data/obras.ts`. Los artistas están en `src/data/artistas.ts` y los colores en las variables de `src/index.css`.
 
-## Cosas a tener en cuenta
+## Ojo con esto
 
-- Las obras y los artistas son de ejemplo. De las 12 imágenes de `src/assets/obras/`, 9 son de relleno generadas por código (las otras 3 son tuyas). Los nombres de los artistas son inventados.
-- El registro y el inicio de sesión son de mentira. Las cuentas se guardan en el navegador, así que no sirve para producción. Cuando haya servidor habrá que cambiar `AuthContext.tsx`.
-- La compra no cobra nada ni manda correos. Solo guarda el pedido en el navegador.
-- Los textos de envío, devoluciones y los legales son provisionales y hay que revisarlos antes de publicar la web.
-- Las tipografías (Jost y Newsreader) se cargan desde Google Fonts, así que hace falta conexión para verlas. Sin ella se ve con las del sistema.
+- Las obras y los artistas son de ejemplo. Los nombres de los artistas me los inventé.
+- El registro y el login son de mentira. Las cuentas se guardan en el navegador, así que esto no vale para producción. Cuando haya servidor, habrá que reescribir `AuthContext.tsx`.
+- La compra no cobra nada ni envía correos, solo guarda el pedido en el navegador.
+- Los textos de envíos, devoluciones y los legales son provisionales.
+- Las tipografías (Jost y Newsreader) vienen de Google Fonts, así que sin conexión se ven con las del sistema.
